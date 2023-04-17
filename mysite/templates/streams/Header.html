@@ -1,0 +1,27 @@
+<!-- Navigation-->
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{%image self.MasterImage original as img %}
+
+
+<div class="relativ" id="home">
+    <div class='bg-black h-screen overflow-hidden'>
+      <img class="object-cover min-h-screen opacity-[80%]" src={{img.url}} alt="Hero Image" />
+    </div>
+      <div class="bottom-[10%] w-3/4  left-8 absolute text-white text-left">
+          <h2 class="xl:text-7xl md:text-4xl  sm:text-2xl text-5xl ">{{self.HEADER}}</h2>
+          <p class="hidden sm:inline-block xl:text-4xl text-2xl sm:text-lg">{{self.SUBTITLE}}</p>
+          <div class="flex mt-3">
+            
+            <a class='inline-flex  text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg' {% if button1_page %} href="{{ button1_page.url }}" {% elif item.button_url %} href="{{ button2_url }}" {% endif %} >{{self.Button1}}</a>
+            
+            
+            <a class='buttonSecond ml-4 inline-flex text-gray-100  border-2 border-gray-100 py-2 px-6 focus:outline-none hover:bg-gray-200 hover:text-gray-700 rounded text-lg' {% if button2_page %} href="{{ button2_page.url }}" {% elif item.button_url %} href="{{ button2_url }}" {% endif %} >{{self.Button2}}</a>
+            
+            
+            
+
+          </div>
+      </div>
+  </div>

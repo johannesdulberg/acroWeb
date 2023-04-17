@@ -1,0 +1,26 @@
+<!-- Navigation-->
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{%image self.image original as img %}
+
+<section  class=" w-full {%if self.reverse %} md:flex-row-reverse {%else%} md:flex-row {%endif%} flex flex-col-reverse pt-[40px] md:pt-[80px] justify-center items-center">
+        
+    <div  class="md:bg-transparent  w-full md:w-3/5 h-full  z-10">
+        <img alt="self-Logo w-1/4 md:w-1/2 max-h-[500px]" src={{img.url}}/>
+    </div>
+    <div  class="w-full md:w-2/5 h-full px-5 md:px-10 mb-10 md:mb-0 text-left">
+        <h2 class="text-2xl sm:text-5xl xl:text-[60px] lg:text-[40px] md:text-[30px] md:text-left text-center ">{{self.title}}</h2>
+        <div class="  mt-2"></div>
+        <p class=" text-m sm:text-l lg:text-xl  mt-4 md:text-left text-center">
+        {{self.body}}
+        </p>
+
+        <div class="md:justify-start flex justify-center">
+
+            <button class='solidButton px-8 py-3 mt-5 ml-0 {% if button_page %} href="{{ button_page.url }}" {% elif button_url %} href="{{ button_url }}" {% endif %} '>{{self.button}}</button>
+        </div>
+        
+    </div>
+
+</section>

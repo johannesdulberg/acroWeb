@@ -1,0 +1,62 @@
+<!-- Navigation-->
+{% load static %}
+
+
+<nav class='w-screen h-[80px] z-20 bg-white fixed drop-shadow-lg'>
+    <div class='px-2 flex w-full h-full justify-between'>
+      <div class='flex items-center'>
+        {% if self.button_page %}
+            <button class='text-3xl font-bold mr-4 sm:text-4xl' href="{{self.button_page.url}}">{{self.title}}</button>
+        {% elif self.button_url %}
+            <button class='text-3xl font-bold mr-4 sm:text-4xl'  href="{{self.button_url}}">{{self.title}}</button>
+        {% endif %}
+      </div>
+      <div class='flex items-center'>
+      <ul class='hidden md:flex items-center'>
+        {% for item in self.item %}
+             
+                    <!-- {% if item.button_page %}
+        
+                        <li ><a class="active hover-underline-animation" href="{{ item.button_page.url }}" >{{item.title}}</a></li>
+                    {% elif item.button_url %}
+                        <li ><a class="active hover-underline-animation" href="{{ item.button_url }}" >{{item.title}}</a></li>
+                    {% endif %} -->
+                    <li ><a class="active hover-underline-animation p-4" {% if item.button_page %} href="{{ item.button_page.url }}" {% elif item.button_url %} href="{{ item.button_url }}" {% endif %} >{{item.title}}</a></li>
+                        
+        {% endfor %}
+      </ul>
+        <div class='hidden md:flex pr-4'>
+        <a class='px-8 ml-4 py-3 solidButton' href="/#contact">Kontakt</a>
+        </div>
+        <!-- <div class='md:hidden mr-4' onClick={handleClick}>
+          {!nav ? <Bars3Icon class='w-9' /> : <XMarkIcon class='w-9' />}
+        </div> -->
+        <button class="md:hidden mr-4" onclick="dropDown()"> <img src="../../static/assets/justify.svg" alt="Bootstrap" width="32" height="32"></button>
+      </div>
+      
+      
+    </div>
+
+    
+    <!-- <Scrollspy className={!nav ? 'hidden' : 'absolute bg-white w-full px-8'} items={ ['home', 'services', 'projects',"about"] } currentClassName="is-current"></Scrollspy> -->
+    <ul class="absolute hidden bg-white w-full px-8 text-center" id="dropdownMenu">
+        {% for item in self.item %}
+             
+                    <!-- {% if item.button_page %}
+        
+                        <li ><a class="active hover-underline-animation" href="{{ item.button_page.url }}" >{{item.title}}</a></li>
+                    {% elif item.button_url %}
+                        <li ><a class="active hover-underline-animation" href="{{ item.button_url }}" >{{item.title}}</a></li>
+                    {% endif %} -->
+                    <li class="p-4"><a class="active hover-underline-animation" {% if item.button_page %} href="{{ item.button_page.url }}" {% elif item.button_url %} href="{{ item.button_url }}" {% endif %} >{{item.title}}</a></li>
+
+                        
+        {% endfor %}
+    
+
+      <div class='flex flex-col my-4'>
+          <a class='px-8 py-3 solidButton' href="/#contact">Kontakt</a>
+      </div>
+    </ul> 
+    
+</nav>

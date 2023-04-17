@@ -1,0 +1,12 @@
+<!-- Navigation-->
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{%image self.MasterImage original as img %}
+
+
+<div class="relativ  pt-[40px]" id="home">
+    <div class=' overflow-hidden md:p-[3%]'>
+      <img class="object-cover min-w-screen" src={{img.url}} alt="Hero Image" />
+    </div>
+  </div>
